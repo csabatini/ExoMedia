@@ -1190,14 +1190,14 @@ public class VideoView extends RelativeLayout {
          * Specifies if the {@link VideoControls} should be added to the view.  These
          * can be added through source code with {@link #setControls(VideoControls)}
          */
-        public boolean useDefaultControls = false;
+        public boolean useDefaultControls = true;
 
         /**
          * Specifies if the {@link VideoViewApi} implementations should use the {@link android.view.TextureView}
          * implementations.  If this is false then the implementations will be based on
          * the {@link android.view.SurfaceView}
          */
-        public boolean useTextureViewBacking = false;
+        public boolean useTextureViewBacking = true;
 
         /**
          * The resource id that points to a custom implementation for the <code>ExoPlayer</code>
