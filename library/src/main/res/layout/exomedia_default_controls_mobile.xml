@@ -50,13 +50,16 @@
         android:id="@+id/exomedia_controls_interactive_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:background="@drawable/exomedia_default_controls_interactive_background"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
         android:orientation="vertical"
         android:paddingBottom="16dp"
         android:paddingTop="16dp">
+<!--        android:layout_alignparentbottom="true"-->
+<!--        android:layout_alignparentleft="true"-->
+<!--        android:layout_alignparentstart="true"-->
 
         <LinearLayout
             android:layout_width="match_parent"
