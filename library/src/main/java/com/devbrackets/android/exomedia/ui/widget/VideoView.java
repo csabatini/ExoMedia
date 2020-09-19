@@ -903,7 +903,7 @@ public class VideoView extends RelativeLayout {
      */
     protected void postInit(@NonNull AttributeContainer attributeContainer) {
         if (attributeContainer.useDefaultControls) {
-            setControls(deviceUtil.isDeviceTV(getContext()) ? new VideoControlsLeanback(getContext()) : new VideoControlsMobile(getContext()));
+            setControls(new VideoControlsMobile(getContext()));
         }
 
         if (attributeContainer.scaleType != null) {

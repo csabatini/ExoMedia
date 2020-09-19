@@ -23,6 +23,7 @@ import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
@@ -65,6 +66,10 @@ public class VideoControlsMobile extends VideoControls {
     @Override
     protected int getLayoutResource() {
         return R.layout.exomedia_default_controls_mobile;
+    }
+
+    public void setFullScreenListener(View.OnClickListener listener) {
+        fullScreenButton.setOnClickListener(listener);
     }
 
     @Override
@@ -198,7 +203,7 @@ public class VideoControlsMobile extends VideoControls {
         } else {
             playPauseButton.setEnabled(false);
             previousButton.setEnabled(false);
-            nextButton.setEnabled(false);
+            fullScreenButton.setEnabled(false);
         }
 
         show();
@@ -216,7 +221,7 @@ public class VideoControlsMobile extends VideoControls {
 
         playPauseButton.setEnabled(true);
         previousButton.setEnabled(enabledViews.get(R.id.exomedia_controls_previous_btn, true));
-        nextButton.setEnabled(enabledViews.get(R.id.exomedia_controls_next_btn, true));
+        fullScreenButton.setEnabled(enabledViews.get(R.id.exomedia_controls_full_screen_btn, true));
 
         updatePlaybackState(videoView != null && videoView.isPlaying());
     }

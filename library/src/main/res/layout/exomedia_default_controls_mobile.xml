@@ -51,12 +51,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/exomedia_default_controls_interactive_background"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:orientation="vertical"
         android:paddingBottom="16dp"
         android:paddingTop="16dp">
+<!--        android:layout_centerHorizontal="true"-->
 <!--        android:layout_alignparentbottom="true"-->
 <!--        android:layout_alignparentleft="true"-->
 <!--        android:layout_alignparentstart="true"-->
@@ -133,23 +135,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:minHeight="@dimen/exomedia_min_button_height"
-                android:minWidth="@dimen/exomedia_min_button_height"
+                android:minHeight="60dp"
+                android:minWidth="60dp"
                 app:srcCompat="@drawable/exomedia_ic_play_arrow_white"
                 tools:ignore="ContentDescription"/>
+<!--            android:minHeight="@dimen/exomedia_min_button_height"-->
+<!--            android:minWidth="@dimen/exomedia_min_button_height"-->
 
             <ImageButton
-                android:id="@+id/exomedia_controls_next_btn"
+                android:id="@+id/exomedia_controls_full_screen_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/exomedia_min_button_height"
                 android:background="@android:color/transparent"
                 android:minHeight="@dimen/exomedia_min_button_height"
                 android:minWidth="@dimen/exomedia_min_button_height"
-                android:visibility="gone"
-                app:srcCompat="@drawable/exomedia_ic_skip_next_white"
-                tools:ignore="ContentDescription,RtlHardcoded"
-                tools:visibility="visible"/>
+                app:srcCompat="@drawable/exomedia_ic_full_screen"
+                tools:ignore="ContentDescription,RtlHardcoded"/>
         </LinearLayout>
     </LinearLayout>
 

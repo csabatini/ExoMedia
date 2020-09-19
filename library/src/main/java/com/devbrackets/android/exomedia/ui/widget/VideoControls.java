@@ -64,7 +64,7 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
 
     protected ImageButton playPauseButton;
     protected ImageButton previousButton;
-    protected ImageButton nextButton;
+    protected ImageButton fullScreenButton;
 
     protected ProgressBar loadingProgressBar;
 
@@ -335,7 +335,7 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
      * @param drawable The drawable to use
      */
     public void setNextDrawable(Drawable drawable) {
-        nextButton.setImageDrawable(drawable);
+        fullScreenButton.setImageDrawable(drawable);
     }
 
     /**
@@ -391,8 +391,8 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
      * @param enabled If the Next button is enabled [default: false]
      */
     public void setNextButtonEnabled(boolean enabled) {
-        nextButton.setEnabled(enabled);
-        enabledViews.put(R.id.exomedia_controls_next_btn, enabled);
+        fullScreenButton.setEnabled(enabled);
+        enabledViews.put(R.id.exomedia_controls_full_screen_btn, enabled);
     }
 
     /**
@@ -440,7 +440,7 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
      * @param removed If the Next button should be removed [default: true]
      */
     public void setNextButtonRemoved(boolean removed) {
-        nextButton.setVisibility(removed ? View.GONE : View.VISIBLE);
+        fullScreenButton.setVisibility(removed ? View.GONE : View.VISIBLE);
     }
 
     /**
@@ -594,7 +594,7 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
 
         playPauseButton = findViewById(R.id.exomedia_controls_play_pause_btn);
         previousButton = findViewById(R.id.exomedia_controls_previous_btn);
-        nextButton = findViewById(R.id.exomedia_controls_next_btn);
+        fullScreenButton = findViewById(R.id.exomedia_controls_full_screen_btn);
 
         loadingProgressBar = findViewById(R.id.exomedia_controls_video_loading);
 
@@ -619,7 +619,7 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
                 onPreviousClick();
             }
         });
-        nextButton.setOnClickListener(new OnClickListener() {
+        fullScreenButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 onNextClick();
@@ -642,8 +642,8 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
         Drawable previousDrawable = ResourceUtil.tintList(getContext(), R.drawable.exomedia_ic_skip_previous_white, tintList);
         previousButton.setImageDrawable(previousDrawable);
 
-        Drawable nextDrawable = ResourceUtil.tintList(getContext(), R.drawable.exomedia_ic_skip_next_white, tintList);
-        nextButton.setImageDrawable(nextDrawable);
+        Drawable fsDrawable= ResourceUtil.tintList(getContext(), R.drawable.exomedia_ic_full_screen, tintList);
+        fullScreenButton.setImageDrawable(fsDrawable);
     }
 
     /**
