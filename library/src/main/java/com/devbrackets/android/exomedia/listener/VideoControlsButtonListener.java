@@ -31,7 +31,8 @@ public interface VideoControlsButtonListener {
      *
      * @return True if the event has been handled
      */
-    boolean onPreviousClicked();
+//    boolean onPreviousClicked();
+    boolean onExitFullScreenClicked();
 
     /**
      * Occurs when the Next button on the {@link com.devbrackets.android.exomedia.ui.widget.VideoControls}
@@ -39,7 +40,8 @@ public interface VideoControlsButtonListener {
      *
      * @return True if the event has been handled
      */
-    boolean onNextClicked();
+//    boolean onNextClicked();
+    boolean onFullScreenClicked();
 
     /**
      * Occurs when the Rewind button on the {@link com.devbrackets.android.exomedia.ui.widget.VideoControls}

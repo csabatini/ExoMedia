@@ -138,24 +138,24 @@
                 android:background="@android:color/transparent"
                 android:minHeight="24dp"
                 android:minWidth="24dp"
+                android:visibility="gone"
                 android:layout_centerVertical="true"
                 app:srcCompat="@drawable/exomedia_ic_full_screen"
                 tools:ignore="ContentDescription,RtlHardcoded"/>
 
             <ImageButton
-                android:id="@+id/exomedia_controls_previous_btn"
+                android:id="@+id/exomedia_controls_full_screen_exit_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="24dp"
                 android:layout_toLeftOf="@id/exomedia_controls_play_pause_btn"
                 android:background="@android:color/transparent"
-                android:minHeight="@dimen/exomedia_min_button_height"
-                android:minWidth="@dimen/exomedia_min_button_height"
+                android:minHeight="24dp"
+                android:minWidth="24dp"
                 android:visibility="gone"
                 android:layout_centerVertical="true"
-                app:srcCompat="@drawable/exomedia_ic_skip_previous_white"
-                tools:ignore="ContentDescription,RtlHardcoded"
-                tools:visibility="visible"/>
+                app:srcCompat="@drawable/exomedia_ic_full_screen_exit"
+                tools:ignore="ContentDescription,RtlHardcoded" />
         </RelativeLayout>
     </LinearLayout>
 

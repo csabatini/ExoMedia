@@ -63,8 +63,8 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
     protected TextView descriptionTextView;
 
     protected ImageButton playPauseButton;
-    protected ImageButton previousButton;
     protected ImageButton fullScreenButton;
+    protected ImageButton exitFullScreenButton;
 
     protected ProgressBar loadingProgressBar;
 
@@ -326,7 +326,7 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
      * @param drawable The drawable to use
      */
     public void setPreviousDrawable(Drawable drawable) {
-        previousButton.setImageDrawable(drawable);
+        exitFullScreenButton.setImageDrawable(drawable);
     }
 
     /**
@@ -371,13 +371,13 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
      * or use the defaults if they haven't been set, and block any click events.
      * <p>
      * This method will NOT re-add buttons that have previously been removed with
-     * {@link #setNextButtonRemoved(boolean)}.
+     * {@link #setFullScreenButtonRemoved(boolean)}.
      *
      * @param enabled If the Previous button is enabled [default: false]
      */
-    public void setPreviousButtonEnabled(boolean enabled) {
-        previousButton.setEnabled(enabled);
-        enabledViews.put(R.id.exomedia_controls_previous_btn, enabled);
+    public void setExitFullScreenButtonEnabled(boolean enabled) {
+        exitFullScreenButton.setEnabled(enabled);
+        enabledViews.put(R.id.exomedia_controls_full_screen_exit_btn, enabled);
     }
 
     /**
@@ -386,11 +386,11 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
      * or use the defaults if they haven't been set, and block any click events.
      * <p>
      * This method will NOT re-add buttons that have previously been removed with
-     * {@link #setPreviousButtonRemoved(boolean)}.
+     * {@link #setExitFullScreenButtonRemoved(boolean)} (boolean)}.
      *
      * @param enabled If the Next button is enabled [default: false]
      */
-    public void setNextButtonEnabled(boolean enabled) {
+    public void setFullScreenButtonEnabled(boolean enabled) {
         fullScreenButton.setEnabled(enabled);
         enabledViews.put(R.id.exomedia_controls_full_screen_btn, enabled);
     }
@@ -425,12 +425,12 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
 
     /**
      * Adds or removes the Previous button.  This will change the visibility
-     * of the button, if you want to change the enabled/disabled images see {@link #setPreviousButtonEnabled(boolean)}
+     * of the button, if you want to change the enabled/disabled images see {@link #setExitFullScreenButtonEnabled(boolean)}
      *
      * @param removed If the Previous button should be removed [default: true]
      */
-    public void setPreviousButtonRemoved(boolean removed) {
-        previousButton.setVisibility(removed ? View.GONE : View.VISIBLE);
+    public void setExitFullScreenButtonRemoved(boolean removed) {
+        exitFullScreenButton.setVisibility(removed ? View.GONE : View.VISIBLE);
     }
 
     /**
@@ -439,7 +439,7 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
      *
      * @param removed If the Next button should be removed [default: true]
      */
-    public void setNextButtonRemoved(boolean removed) {
+    public void setFullScreenButtonRemoved(boolean removed) {
         fullScreenButton.setVisibility(removed ? View.GONE : View.VISIBLE);
     }
 
@@ -593,7 +593,7 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
         descriptionTextView = findViewById(R.id.exomedia_controls_description);
 
         playPauseButton = findViewById(R.id.exomedia_controls_play_pause_btn);
-        previousButton = findViewById(R.id.exomedia_controls_previous_btn);
+        exitFullScreenButton = findViewById(R.id.exomedia_controls_full_screen_exit_btn);
         fullScreenButton = findViewById(R.id.exomedia_controls_full_screen_btn);
 
         loadingProgressBar = findViewById(R.id.exomedia_controls_video_loading);
@@ -613,16 +613,16 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
                 onPlayPauseClick();
             }
         });
-        previousButton.setOnClickListener(new OnClickListener() {
+        exitFullScreenButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                onPreviousClick();
+                onExitFullScreenClick();
             }
         });
         fullScreenButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                onNextClick();
+                onFullScreenClick();
             }
         });
     }
@@ -639,8 +639,8 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
         pauseDrawable = ResourceUtil.tintList(getContext(), R.drawable.exomedia_ic_pause_white, tintList);
         playPauseButton.setImageDrawable(playDrawable);
 
-        Drawable previousDrawable = ResourceUtil.tintList(getContext(), R.drawable.exomedia_ic_skip_previous_white, tintList);
-        previousButton.setImageDrawable(previousDrawable);
+        Drawable previousDrawable = ResourceUtil.tintList(getContext(), R.drawable.exomedia_ic_full_screen_exit, tintList);
+        exitFullScreenButton.setImageDrawable(previousDrawable);
 
         Drawable fsDrawable= ResourceUtil.tintList(getContext(), R.drawable.exomedia_ic_full_screen, tintList);
         fullScreenButton.setImageDrawable(fsDrawable);
@@ -661,9 +661,9 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
      * Performs the functionality to inform any listeners that the previous
      * button has been clicked
      */
-    protected void onPreviousClick() {
-        if (buttonsListener == null || !buttonsListener.onPreviousClicked()) {
-            internalListener.onPreviousClicked();
+    protected void onExitFullScreenClick() {
+        if (buttonsListener == null || !buttonsListener.onExitFullScreenClicked()) {
+            internalListener.onExitFullScreenClicked();
         }
     }
 
@@ -671,9 +671,9 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
      * Performs the functionality to inform any listeners that the next
      * button has been clicked
      */
-    protected void onNextClick() {
-        if (buttonsListener == null || !buttonsListener.onNextClicked()) {
-            internalListener.onNextClicked();
+    protected void onFullScreenClick() {
+        if (buttonsListener == null || !buttonsListener.onFullScreenClicked()) {
+            internalListener.onFullScreenClicked();
         }
     }
 
@@ -762,13 +762,13 @@ public abstract class VideoControls extends RelativeLayout implements VideoContr
         }
 
         @Override
-        public boolean onPreviousClicked() {
+        public boolean onExitFullScreenClicked() {
             //Purposefully left blank
             return false;
         }
 
         @Override
-        public boolean onNextClicked() {
+        public boolean onFullScreenClicked() {
             //Purposefully left blank
             return false;
         }
